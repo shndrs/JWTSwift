@@ -14,7 +14,7 @@ final class SRRequestAdapter: RequestAdapter, RequestRetrier {
     private typealias RefreshCompletion = (_ succeeded: Bool, _ accessToken: String?) -> Void
 
     private let lock = NSLock()
-
+    
     private var isRefreshing = false
     private var requestsToRetry: [RequestRetryCompletion] = []
     var accessToken:String? = nil
@@ -30,14 +30,15 @@ final class SRRequestAdapter: RequestAdapter, RequestRetrier {
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         var urlRequest = urlRequest
 
-        if let urlString = urlRequest.url?.absoluteString, urlString.hasPrefix("BASE_URL"), !urlString.hasSuffix("/renew") {
+        if let urlString = urlRequest.url?.absoluteString,
+            urlString.hasPrefix(Urls.base.rawValue),
+            !urlString.hasSuffix(Urls.refreshToken.rawValue) {
             if let token = accessToken {
                 urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
             }
         }
         return urlRequest
     }
-
 
     // MARK: - RequestRetrier
 
@@ -75,19 +76,21 @@ final class SRRequestAdapter: RequestAdapter, RequestRetrier {
 
         isRefreshing = true
 
-        let urlString = "\("BASE_URL")token/renew"
+        let urlString = Urls.base.rawValue + Urls.refreshToken.rawValue
 
-        Alamofire.request(urlString, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization":"Bearer \(refreshToken!)"]).responseJSON { [weak self] response in
-            guard let strongSelf = self else { return }
-            if
-                let json = response.result.value as? [String: Any],
-                let accessToken = json["accessToken"] as? String
-            {
+        Alamofire.request(urlString,
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: ["Authorization":"Bearer \(refreshToken!)"]).responseJSON { [weak self] response in
+            guard let self = self else { return }
+            if let json = response.result.value as? [String: Any],
+                let accessToken = json["accessToken"] as? String {
                 completion(true, accessToken)
             } else {
                 completion(false, nil)
             }
-            strongSelf.isRefreshing = false
+            self.isRefreshing = false
         }
     }
     

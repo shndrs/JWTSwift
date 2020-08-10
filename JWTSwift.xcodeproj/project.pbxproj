@@ -14,6 +14,7 @@
 		72BBA7AC24E19DC40013293A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72BBA7AB24E19DC40013293A /* Assets.xcassets */; };
 		72BBA7AF24E19DC40013293A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72BBA7AD24E19DC40013293A /* LaunchScreen.storyboard */; };
 		72BBA7B824E19EF90013293A /* JWTAccessTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BBA7B724E19EF90013293A /* JWTAccessTokenAdapter.swift */; };
+		72BBA7BB24E1ADC50013293A /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BBA7BA24E1ADC50013293A /* Urls.swift */; };
 		9DD9197773E74B808D7E93DF /* Pods_JWTSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC24FC247957DBB5838296D /* Pods_JWTSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		72BBA7AE24E19DC40013293A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72BBA7B024E19DC40013293A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72BBA7B724E19EF90013293A /* JWTAccessTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTAccessTokenAdapter.swift; sourceTree = "<group>"; };
+		72BBA7BA24E1ADC50013293A /* Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
 		A2CB30B4BCD9BBF9EB93F6B3 /* Pods-JWTSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWTSwift.release.xcconfig"; path = "Target Support Files/Pods-JWTSwift/Pods-JWTSwift.release.xcconfig"; sourceTree = "<group>"; };
 		EBC24FC247957DBB5838296D /* Pods_JWTSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JWTSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 		72BBA7A124E19DC20013293A /* JWTSwift */ = {
 			isa = PBXGroup;
 			children = (
+				72BBA7B924E1ADB60013293A /* Utill */,
 				72BBA7B624E19EEC0013293A /* JWT */,
 				72BBA7A224E19DC30013293A /* AppDelegate.swift */,
 				72BBA7A424E19DC30013293A /* SceneDelegate.swift */,
@@ -92,6 +95,14 @@
 				72BBA7B724E19EF90013293A /* JWTAccessTokenAdapter.swift */,
 			);
 			path = JWT;
+			sourceTree = "<group>";
+		};
+		72BBA7B924E1ADB60013293A /* Utill */ = {
+			isa = PBXGroup;
+			children = (
+				72BBA7BA24E1ADC50013293A /* Urls.swift */,
+			);
+			path = Utill;
 			sourceTree = "<group>";
 		};
 		900873B1B843A2DA7693999D /* Frameworks */ = {
@@ -221,6 +232,7 @@
 				72BBA7A324E19DC30013293A /* AppDelegate.swift in Sources */,
 				72BBA7A524E19DC30013293A /* SceneDelegate.swift in Sources */,
 				72BBA7B824E19EF90013293A /* JWTAccessTokenAdapter.swift in Sources */,
+				72BBA7BB24E1ADC50013293A /* Urls.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
