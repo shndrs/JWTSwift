@@ -12,5 +12,6 @@ enum Urls: String {
     
     case base = "https://www.shndrs.com/"
     case refreshToken = "refresh/token"
+    case register = "app/register"
     
 }

@@ -72,12 +72,10 @@ final class SRRequestAdapter: RequestAdapter, RequestRetrier {
     // MARK: - Private Refresh Tokens
 
     private func refreshTokens(completion: @escaping RefreshCompletion) {
+        
         guard !isRefreshing else { return }
-
         isRefreshing = true
-
         let urlString = Urls.base.rawValue + Urls.refreshToken.rawValue
-
         Alamofire.request(urlString,
                           method: .get,
                           parameters: nil,
@@ -91,28 +89,6 @@ final class SRRequestAdapter: RequestAdapter, RequestRetrier {
                 completion(false, nil)
             }
             self.isRefreshing = false
-        }
-    }
-    
-}
-
-class Sahand {
-    
-    func std() {
-        
-        let request_url = "Constants.API_URL" + "/path/to/resource"
-        let sessionManager = Alamofire.SessionManager.default
-        sessionManager.adapter = SRRequestAdapter.shared
-        
-        sessionManager.request(request_url).validate().responseJSON { (response: DataResponse<Any>) in
-            switch(response.result) {
-            case .success(_):
-                print(response.result.value!)
-//                completion(response.result.value!)
-            case .failure(_):
-                print(response.result.error!)
-//                completion(response.result.error!)
-            }
         }
     }
     
