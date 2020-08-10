@@ -1,0 +1,6 @@
+framework module Pods_JWTSwift {
+  umbrella header "Pods-JWTSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
